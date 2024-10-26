@@ -1,0 +1,162 @@
+\documentclass[letterpaper,11pt]{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+\usepackage{latexsym}%
+\usepackage[empty]{fullpage}%
+\usepackage{titlesec}%
+\usepackage{marvosym}%
+\usepackage{verbatim}%
+\usepackage{enumitem}%
+\usepackage[hidelinks]{hyperref}%
+\usepackage{fancyhdr}%
+\usepackage[english]{babel}%
+\usepackage{tabularx}%
+\usepackage[usenames,dvipsnames]{color}%
+%
+\input{glyphtounicode}%
+\pagestyle{fancy}%
+\fancyhf{}%
+\fancyfoot{}%
+\renewcommand{\headrulewidth}{0pt}%
+\renewcommand{\footrulewidth}{0pt}%
+\addtolength{\oddsidemargin}{-0.5in}%
+\addtolength{\evensidemargin}{-0.5in}%
+\addtolength{\textwidth}{1in}%
+\addtolength{\topmargin}{-.5in}%
+\addtolength{\textheight}{1.0in}%
+\urlstyle{same}%
+\raggedbottom%
+\raggedright%
+\setlength{\tabcolsep}{0in}%
+\titleformat{\section}{\vspace{-10pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]%
+\pdfgentounicode=1%
+
+    \newcommand{\resumeItem}[1]{
+      \item\small{#1 \vspace{-2pt}}
+    }
+    \newcommand{\resumeSubheading}[4]{
+      \vspace{-2pt}\item
+        \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+          \textbf{#1} & #2 \\
+          \textit{\small#3} & \textit{\small #4} \\
+        \end{tabular*}\vspace{-7pt}
+    }
+    \newcommand{\resumeSubSubheading}[2]{
+        \item
+        \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+          \textit{\small#1} & \textit{\small #2} \\
+        \end{tabular*}\vspace{-7pt}
+    }
+    \newcommand{\resumeProjectHeading}[2]{
+        \item
+        \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+          \small#1 & #2 \\
+        \end{tabular*}\vspace{-7pt}
+    }
+    \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+    \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+    \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+    \newcommand{\resumeItemListStart}{\begin{itemize}}
+    \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+    %
+%
+\begin{document}%
+\normalsize%
+\begin{document}%
+
+    \begin{center}
+        \textbf{\Huge \scshape Ronald Arifin} \\ \vspace{5pt}
+        \small 510-478-6156 $|$ \href{mailto:ronaldarifin@berkeley.edu}{\underline{ronaldarifin@berkeley.edu}} $|$ 
+        \href{https://linkedin.com/in/ronaldarifin}{\underline{linkedin.com/in/ronaldarifin}} $|$
+        \href{https://github.com/ronaldarifin}{\underline{github.com/ronaldarifin}} $|$
+        \href{https://www.ronaldarifin.com}{\underline{ronaldarifin.com}}
+    \end{center}
+    %
+
+    \section{Education}
+    \resumeSubHeadingListStart
+        \resumeSubheading
+          {University of California, Berkeley}{California}
+          {Electrical Engineering and Computer Science, B.S.}{Expected Graduation: December 2024}
+          \resumeItemListStart
+            \resumeItem{\textbf{Relevant Coursework}: Introduction to Database Systems, Introduction to the Internet: Protocol and Architecture, Computer Security, Operating Systems, Algorithms and Data Structures}
+            \resumeItem{\textbf{Campus Organizations:} Computer Science Mentors [Senior Mentor], Cloud Computing at Cal [Lead Engineer], Google Developers at DVC [President]}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+    %
+
+    \section{Experience}
+    \resumeSubHeadingListStart
+        \resumeSubheading
+          {HrHouz – Software Engineer Intern}{Jun 2024 -- Present}
+          {Python, Docker, PostgreSQL, Github Actions, Embeddings}{Berkeley, CA}
+          \resumeItemListStart
+            \resumeItem{Led the development of a top K applicant ranking service, expanding HRHouz's product offerings to recruiters.}
+            \resumeItem{Optimized resume matching for recruiters by chunking candidate resume and applying keyword searches \& \textbf{cosine similarity vector search} using pgvector improving resume search precision by 37\%}
+            \resumeItem{Built pipelines to batch data transfer from OLTP to OLAP system pushing over 50.000 records, streamlining data preparation for custom embedding training.}
+            \resumeItem{Streamlined service setup for PostgreSQL \& back-end server with Make and Docker, reducing build and testing time by 28\%.}
+          \resumeItemListEnd
+        \resumeSubheading
+          {UC Berkeley - CS61A Head Teaching Assistant}{May 2023 - Present}
+          {Python, SQL, Scheme}{Berkeley, CA}
+          \resumeItemListStart
+            \resumeItem{Led labs and discussions for Berkeley's CS61A, teaching OOP, SQL, Scheme, and recursion to over 1,000 students, improving their understanding and performance in programming fundamentals.}
+            \resumeItem{Managed CS61A Edstem platform, coordinating with TAs on logistics and addressing 300+ theory questions.}
+          \resumeItemListEnd
+        \resumeSubheading
+          {Skygeni – Software Engineer Contract}{Jan 2024 -  May 2024}
+          {Python, OpenAI API, Function Calling}{Remote}
+          \resumeItemListStart
+            \resumeItem{Integrated an LLM chatbot into Skygeni's services, providing real-time marketing metrics insights, improving user decision-making.}
+            \resumeItem{Implemented tool calls, enabling the chatbot to retrieve key marketing data within Skygeni's platform.}
+          \resumeItemListEnd
+        \resumeSubheading
+          {Sayurbox – Software Engineer Intern}{Aug 2021 -  Feb 2022}
+          {Typescript, React, Axios}{Remote}
+          \resumeItemListStart
+            \resumeItem{Increased Sayurbox WMS receiving process by 23\% by changing the UI and UX in 5 view controllers impacting over 72 warehouse workers with \textbf{Typescript, React, and Reactstrap} library}
+            \resumeItem{Integrated 10+ APIs using \textbf{Axios} to display, submit, and delete data in various warehouse processes}
+            \resumeItem{Led task distribution and communicated git merging with other engineers hitting 1 epic task per scrum cycle}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+    %
+
+    \section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{StudySuite: Stanford Hackathon Winner} $|$ \emph{Python, Fetch AI}}{}
+          \resumeItemListStart
+            \resumeItem{Engineered an interactive learning platform using uAgents, video-to-text extraction, and Large Language Models, applying active recall and spaced repetition principles to boost student retention by 200\%, winning 1st place at Stanford Treehacks out of 120 teams.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Database System} $|$ \emph{Java}}{}
+          \resumeItemListStart
+            \resumeItem{Designed and implemented efficient B+ Tree indexing structures for quick file look ups}
+            \resumeItem{Programmed multigranularity locking and lock management system to prevent deadlock in a transaction}
+            \resumeItem{Applied ARIES recovery protocol to recover data in a database crash by implementing redo and undo logging}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+    %
+
+    \section{Honors and Certifications}
+    \begin{itemize}[leftmargin=0.15in, label={}]
+        \small{\item{
+         \textbf{AWS Cloud Practitioner – Foundational}{}
+        }}
+    \end{itemize}
+    %
+
+    \section{Technical Skills}
+    \begin{itemize}[leftmargin=0.15in, label={}]
+        \small{\item{
+         \textbf{Languages \& Technologies}{: Python, SQL (Postgres), NoSQL (MongoDB), Java} \\
+         \textbf{Frameworks \& Libraries}{: React, Axios, Flask, Pytest, Parse} \\
+         \textbf{Developer Tools}{: Git, Docker, Github Actions, VS Code, Postman, Make, AWS, Warp, Raycast, Vim} \\
+        }}
+    \end{itemize}
+    %
+\end{document}%
+\end{document}
