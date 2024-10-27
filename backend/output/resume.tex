@@ -34,129 +34,43 @@
 \titleformat{\section}{\vspace{-10pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]%
 \pdfgentounicode=1%
 
-    \newcommand{\resumeItem}[1]{
-      \item\small{#1 \vspace{-2pt}}
-    }
-    \newcommand{\resumeSubheading}[4]{
-      \vspace{-2pt}\item
-        \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-          \textbf{#1} & #2 \\
-          \textit{\small#3} & \textit{\small #4} \\
-        \end{tabular*}\vspace{-7pt}
-    }
-    \newcommand{\resumeSubSubheading}[2]{
-        \item
-        \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-          \textit{\small#1} & \textit{\small #2} \\
-        \end{tabular*}\vspace{-7pt}
-    }
-    \newcommand{\resumeProjectHeading}[2]{
-        \item
-        \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-          \small#1 & #2 \\
-        \end{tabular*}\vspace{-7pt}
-    }
-    \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-    \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-    \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-    \newcommand{\resumeItemListStart}{\begin{itemize}}
-    \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-    %
+        \newcommand{\resumeItem}[1]{
+        \item\small{#1 \vspace{-2pt}}
+        }
+        \newcommand{\resumeSubheading}[4]{
+        \vspace{-2pt}\item
+            \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+            \textbf{#1} & #2 \\
+            \textit{\small#3} & \textit{\small #4} \\
+            \end{tabular*}\vspace{-7pt}
+        }
+        \newcommand{\resumeSubSubheading}[2]{
+            \item
+            \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+            \textit{\small#1} & \textit{\small #2} \\
+            \end{tabular*}\vspace{-7pt}
+        }
+        \newcommand{\resumeProjectHeading}[2]{
+            \item
+            \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+            \textbf{\small#1} & #2 \\
+            \end{tabular*}\vspace{-7pt}
+        }
+        \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+        \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+        \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+        \newcommand{\resumeItemListStart}{\begin{itemize}}
+        \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+        %
 %
 \begin{document}%
 \normalsize%
 \begin{document}%
-
-    \begin{center}
-        \textbf{\Huge \scshape Ronald Arifin} \\ \vspace{5pt}
-        \small 510-478-6156 $|$ \href{mailto:ronaldarifin@berkeley.edu}{\underline{ronaldarifin@berkeley.edu}} $|$ 
-        \href{https://linkedin.com/in/ronaldarifin}{\underline{linkedin.com/in/ronaldarifin}} $|$
-        \href{https://github.com/ronaldarifin}{\underline{github.com/ronaldarifin}} $|$
-        \href{https://www.ronaldarifin.com}{\underline{ronaldarifin.com}}
-    \end{center}
-    %
-
-    \section{Education}
-    \resumeSubHeadingListStart
-        \resumeSubheading
-          {University of California, Berkeley}{California}
-          {Electrical Engineering and Computer Science, B.S.}{Expected Graduation: December 2024}
-          \resumeItemListStart
-            \resumeItem{\textbf{Relevant Coursework}: Introduction to Database Systems, Introduction to the Internet: Protocol and Architecture, Computer Security, Operating Systems, Algorithms and Data Structures}
-            \resumeItem{\textbf{Campus Organizations:} Computer Science Mentors [Senior Mentor], Cloud Computing at Cal [Lead Engineer], Google Developers at DVC [President]}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-    %
-
-    \section{Experience}
-    \resumeSubHeadingListStart
-        \resumeSubheading
-          {HrHouz – Software Engineer Intern}{Jun 2024 -- Present}
-          {Python, Docker, PostgreSQL, Github Actions, Embeddings}{Berkeley, CA}
-          \resumeItemListStart
-            \resumeItem{Led the development of a top K applicant ranking service, expanding HRHouz's product offerings to recruiters.}
-            \resumeItem{Optimized resume matching for recruiters by chunking candidate resume and applying keyword searches \& \textbf{cosine similarity vector search} using pgvector improving resume search precision by 37\%}
-            \resumeItem{Built pipelines to batch data transfer from OLTP to OLAP system pushing over 50.000 records, streamlining data preparation for custom embedding training.}
-            \resumeItem{Streamlined service setup for PostgreSQL \& back-end server with Make and Docker, reducing build and testing time by 28\%.}
-          \resumeItemListEnd
-        \resumeSubheading
-          {UC Berkeley - CS61A Head Teaching Assistant}{May 2023 - Present}
-          {Python, SQL, Scheme}{Berkeley, CA}
-          \resumeItemListStart
-            \resumeItem{Led labs and discussions for Berkeley's CS61A, teaching OOP, SQL, Scheme, and recursion to over 1,000 students, improving their understanding and performance in programming fundamentals.}
-            \resumeItem{Managed CS61A Edstem platform, coordinating with TAs on logistics and addressing 300+ theory questions.}
-          \resumeItemListEnd
-        \resumeSubheading
-          {Skygeni – Software Engineer Contract}{Jan 2024 -  May 2024}
-          {Python, OpenAI API, Function Calling}{Remote}
-          \resumeItemListStart
-            \resumeItem{Integrated an LLM chatbot into Skygeni's services, providing real-time marketing metrics insights, improving user decision-making.}
-            \resumeItem{Implemented tool calls, enabling the chatbot to retrieve key marketing data within Skygeni's platform.}
-          \resumeItemListEnd
-        \resumeSubheading
-          {Sayurbox – Software Engineer Intern}{Aug 2021 -  Feb 2022}
-          {Typescript, React, Axios}{Remote}
-          \resumeItemListStart
-            \resumeItem{Increased Sayurbox WMS receiving process by 23\% by changing the UI and UX in 5 view controllers impacting over 72 warehouse workers with \textbf{Typescript, React, and Reactstrap} library}
-            \resumeItem{Integrated 10+ APIs using \textbf{Axios} to display, submit, and delete data in various warehouse processes}
-            \resumeItem{Led task distribution and communicated git merging with other engineers hitting 1 epic task per scrum cycle}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-    %
-
-    \section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{StudySuite: Stanford Hackathon Winner} $|$ \emph{Python, Fetch AI}}{}
-          \resumeItemListStart
-            \resumeItem{Engineered an interactive learning platform using uAgents, video-to-text extraction, and Large Language Models, applying active recall and spaced repetition principles to boost student retention by 200\%, winning 1st place at Stanford Treehacks out of 120 teams.}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Database System} $|$ \emph{Java}}{}
-          \resumeItemListStart
-            \resumeItem{Designed and implemented efficient B+ Tree indexing structures for quick file look ups}
-            \resumeItem{Programmed multigranularity locking and lock management system to prevent deadlock in a transaction}
-            \resumeItem{Applied ARIES recovery protocol to recover data in a database crash by implementing redo and undo logging}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-    %
-
-    \section{Honors and Certifications}
-    \begin{itemize}[leftmargin=0.15in, label={}]
-        \small{\item{
-         \textbf{AWS Cloud Practitioner – Foundational}{}
-        }}
-    \end{itemize}
-    %
-
-    \section{Technical Skills}
-    \begin{itemize}[leftmargin=0.15in, label={}]
-        \small{\item{
-         \textbf{Languages \& Technologies}{: Python, SQL (Postgres), NoSQL (MongoDB), Java} \\
-         \textbf{Frameworks \& Libraries}{: React, Axios, Flask, Pytest, Parse} \\
-         \textbf{Developer Tools}{: Git, Docker, Github Actions, VS Code, Postman, Make, AWS, Warp, Raycast, Vim} \\
-        }}
-    \end{itemize}
-    %
+\begin{center}\textbf{\Huge \scshape Ronald Arifin} \\ \vspace{5pt}\small 5104786156 $|$ \href{mailto:ronaldarifin@berkeley.edu}{\underline{ronaldarifin@berkeley.edu}} $|$ \href{https://github.com/ronaldarifin}{\underline{github.com/ronaldarifin}} $|$ \href{https://linkedin.com/in/ronaldarifin}{\underline{linkedin.com/in/ronaldarifin}} $|$ \href{https://www.ronaldarifin.com}{\underline{www.ronaldarifin.com}}\end{center}%
+\section{Education}\resumeSubHeadingListStart\resumeSubheading{University of California, Berkeley}{Expected Graduation: December 2024}{Electrical Engineering and Computer Science, B.S.}{California}\resumeItemListStart\resumeItem{Relevant Coursework: Introduction to Database Systems, Introduction to the Internet: Protocol and Architecture, Computer Security, Operating Systems, Algorithms and Data Structures}\resumeItem{Campus Organizations: Computer Science Mentors [Senior Mentor], Cloud Computing at Cal [Lead Engineer], Google Developers at DVC [President]}\resumeItemListEnd\resumeSubHeadingListEnd%
+\section{Experience}\resumeSubHeadingListStart\resumeSubheading{HRHouz}{June 2023 - Present}{Software Engineer Intern}{Remote}\resumeItemListStart\resumeItem{Developed and maintained a full-stack web application using React, Node.js, and PostgreSQL to streamline HR processes}\resumeItem{Implemented RESTful APIs to handle data communication between front-end and back-end systems}\resumeItem{Collaborated with cross-functional teams to gather requirements and deliver features that improved user experience}\resumeItem{Utilized Git for version control and participated in code reviews to ensure high code quality}\resumeItemListEnd\resumeSubheading{University of California, Berkeley}{January 2023 - May 2023}{Teaching Assistant for CS61A: Structure and Interpretation of Computer Programs}{Berkeley, CA}\resumeItemListStart\resumeItem{Led weekly discussion sections and lab sessions for 30+ students, reinforcing concepts in Python, Scheme, and SQL}\resumeItem{Held office hours to provide one-on-one support, improving student understanding and performance}\resumeItem{Collaborated with course staff to develop and grade assignments, projects, and exams}\resumeItemListEnd\resumeSubheading{SkyGeni}{June 2022 - August 2022}{Software Engineer Intern}{Remote}\resumeItemListStart\resumeItem{Developed and maintained microservices using Node.js and Express.js, improving system modularity and scalability}\resumeItem{Implemented data processing pipelines using Apache Kafka for real-time event streaming}\resumeItem{Contributed to the design and implementation of RESTful APIs, enhancing communication between services}\resumeItem{Participated in Agile development processes, including daily stand-ups and sprint planning}\resumeItemListEnd\resumeSubheading{Sayurbox}{June 2021 - August 2021}{Software Engineer Intern}{Jakarta, Indonesia}\resumeItemListStart\resumeItem{Assisted in the development of an e-commerce platform using React and Redux, improving user experience}\resumeItem{Implemented responsive design principles, ensuring compatibility across various devices and screen sizes}\resumeItem{Collaborated with the backend team to integrate APIs and optimize data retrieval processes}\resumeItem{Participated in code reviews and contributed to the improvement of coding standards and best practices}\resumeItemListEnd\resumeSubHeadingListEnd%
+\section{Projects}\resumeSubHeadingListStart\resumeProjectHeading{\textbf{Study Suite}}{September 2022 - December 2022}\resumeItemListStart\resumeItem{Developed a comprehensive study management platform using React, Node.js, and MongoDB}\resumeItem{Implemented features such as task scheduling, progress tracking, and collaborative study sessions}\resumeItem{Utilized Redux for state management and Socket.io for real-time updates}\resumeItem{Deployed the application on AWS, ensuring scalability and high availability}\resumeItemListEnd\resumeProjectHeading{\textbf{Database Management System}}{January 2023 - May 2023}\resumeItemListStart\resumeItem{Designed and implemented a relational database management system from scratch using C++}\resumeItem{Developed key components including query parser, execution engine, and storage manager}\resumeItem{Implemented B+ tree indexing for efficient data retrieval and query optimization}\resumeItem{Achieved significant performance improvements over naive implementations in benchmark tests}\resumeItemListEnd\resumeSubHeadingListEnd%
+\section{Honors and Certifications}\resumeSubHeadingListStart\resumeSubheading{AWS Cloud Practitioner – Foundational}{}{}{}\resumeSubHeadingListEnd%
+\section{Technical Skills}\begin{itemize}[leftmargin=0.15in, label={}]\small{\item{\textbf{Languages & Technologies}{: Python, SQL (Postgres), NoSQL (MongoDB), Java} \\\textbf{Frameworks & Libraries}{: React, Axios, Flask, Pytest, Parse} \\\textbf{Developer Tools}{: Git, Docker, Github Actions, VS Code, Postman, Make, AWS, Warp, Raycast, Vim} \\}}\end{itemize}%
 \end{document}%
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.26)  26 OCT 2024 15:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.26)  26 OCT 2024 18:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -402,49 +402,73 @@ or  <return>  to continue without it.
 
 
 LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
-(Font)              using `T1/lmr/bx/n' instead on input line 71.
+(Font)              using `T1/lmr/bx/n' instead on input line 69.
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-2.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
+9.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-2.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
+9.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-72.
+69.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-72.
+69.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 72.
+(Font)              <10> on input line 69.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 72.
+(Font)              <7> on input line 69.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 72.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 72
+(Font)              <5> on input line 69.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 69
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 83.
+(Font)              <10.95> on input line 70.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 83.
+(Font)              <8> on input line 70.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 83.
+(Font)              <6> on input line 70.
+
+! Misplaced alignment tab character &.
+<argument> Languages &
+                       Technologies
+l.74 ...ll{\item{\textbf{Languages & Technologies}
+                                                  {: Python, SQL (Postgres),...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<argument> Frameworks &
+                        Libraries
+l.74 ...), Java} \\\textbf{Frameworks & Libraries}
+                                                  {: React, Axios, Flask, Py...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -475,20 +499,20 @@ Package rerunfilecheck Info: File `resume.out' has not changed.
 ### semi simple group (level 1) entered at line 68 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11077 strings out of 474116
- 175055 string characters out of 5743681
- 1957187 words of memory out of 5000000
- 33264 multiletter control sequences out of 15000+600000
+ 11078 strings out of 474116
+ 175067 string characters out of 5743681
+ 1959187 words of memory out of 5000000
+ 33265 multiletter control sequences out of 15000+600000
  610665 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,389b,556s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,2465b,556s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx1
 0.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024
 /texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2024/texmf-dis
 t/fonts/type1/public/lm/lmsy10.pfb>
-Output written on resume.pdf (1 page, 144273 bytes).
+Output written on resume.pdf (1 page, 140548 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  56 compressed objects within 1 object stream

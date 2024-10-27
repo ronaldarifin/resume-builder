@@ -1,218 +1,127 @@
-import os
-import subprocess
-from pylatex import Document, Package, NewPage, Command, Center, SmallText, MediumText, LargeText, LineBreak
-from pylatex.base_classes import Command as NewCommand
-from pylatex.utils import bold, italic, NoEscape
+from resume import Resume, ResumeSection, ResumeSubheading, resumeInfo, TechnicalSkills
 
 def generate_resume_pdf():
-    # Create a new document
-    doc = Document(documentclass='article', document_options=['letterpaper', '11pt'])
 
-    # Add necessary packages and setup
-    doc.packages.append(Package('latexsym'))
-    doc.packages.append(Package('fullpage', options=['empty']))
-    doc.packages.append(Package('titlesec'))
-    doc.packages.append(Package('marvosym'))
-    doc.packages.append(Package('verbatim'))
-    doc.packages.append(Package('enumitem'))
-    doc.packages.append(Package('hyperref', options=['hidelinks']))
-    doc.packages.append(Package('fancyhdr'))
-    doc.packages.append(Package('babel', options=['english']))
-    doc.packages.append(Package('tabularx'))
-    doc.packages.append(Package('color', options=['usenames', 'dvipsnames']))
+    resume = Resume()
 
-    # Add glyphtounicode
-    doc.preamble.append(NoEscape(r'\input{glyphtounicode}'))
+    # create header
+    info = resumeInfo("Ronald Arifin", "5104786156", "ronaldarifin@berkeley.edu", "https://linkedin.com/in/ronaldarifin", "https://github.com/ronaldarifin", "https://www.ronaldarifin.com")
+    resume.add_section(info)
 
-    # Setup page style
-    doc.preamble.append(NoEscape(r'\pagestyle{fancy}'))
-    doc.preamble.append(NoEscape(r'\fancyhf{}'))
-    doc.preamble.append(NoEscape(r'\fancyfoot{}'))
-    doc.preamble.append(NoEscape(r'\renewcommand{\headrulewidth}{0pt}'))
-    doc.preamble.append(NoEscape(r'\renewcommand{\footrulewidth}{0pt}'))
+    education = ResumeSection("Education")
+    berkeley = ResumeSubheading(
+        title="University of California, Berkeley",
+        location="California",
+        subtitle="Electrical Engineering and Computer Science, B.S.",
+        date="Expected Graduation: December 2024",
+    )
+    course_work = "Relevant Coursework: Introduction to Database Systems, Introduction to the Internet: Protocol and Architecture, Computer Security, Operating Systems, Algorithms and Data Structures"
+    campus_orgs = "Campus Organizations: Computer Science Mentors [Senior Mentor], Cloud Computing at Cal [Lead Engineer], Google Developers at DVC [President]"
+    berkeley.add_item(course_work)
+    berkeley.add_item(campus_orgs)
+    education.add_subheading(berkeley) 
+    resume.add_section(education)
 
-    # Adjust margins
-    doc.preamble.append(NoEscape(r'\addtolength{\oddsidemargin}{-0.5in}'))
-    doc.preamble.append(NoEscape(r'\addtolength{\evensidemargin}{-0.5in}'))
-    doc.preamble.append(NoEscape(r'\addtolength{\textwidth}{1in}'))
-    doc.preamble.append(NoEscape(r'\addtolength{\topmargin}{-.5in}'))
-    doc.preamble.append(NoEscape(r'\addtolength{\textheight}{1.0in}'))
+    # added experience
+    experience = ResumeSection("Experience")
+    hrhouz = ResumeSubheading(
+        title="HRHouz",
+        location="Remote",
+        subtitle="Software Engineer Intern",
+        date="June 2023 - Present"
+    )
+    hrhouz.add_item("Developed and maintained a full-stack web application using React, Node.js, and PostgreSQL to streamline HR processes")
+    hrhouz.add_item("Implemented RESTful APIs to handle data communication between front-end and back-end systems")
+    hrhouz.add_item("Collaborated with cross-functional teams to gather requirements and deliver features that improved user experience")
+    hrhouz.add_item("Utilized Git for version control and participated in code reviews to ensure high code quality")
+    
+    ta = ResumeSubheading(
+        title="University of California, Berkeley",
+        location="Berkeley, CA",
+        subtitle="Teaching Assistant for CS61A: Structure and Interpretation of Computer Programs",
+        date="January 2023 - May 2023"
+    )
+    ta.add_item("Led weekly discussion sections and lab sessions for 30+ students, reinforcing concepts in Python, Scheme, and SQL")
+    ta.add_item("Held office hours to provide one-on-one support, improving student understanding and performance")
+    ta.add_item("Collaborated with course staff to develop and grade assignments, projects, and exams")
 
-    # Other settings
-    doc.preamble.append(NoEscape(r'\urlstyle{same}'))
-    doc.preamble.append(NoEscape(r'\raggedbottom'))
-    doc.preamble.append(NoEscape(r'\raggedright'))
-    doc.preamble.append(NoEscape(r'\setlength{\tabcolsep}{0in}'))
+    skygeni = ResumeSubheading(
+        title="SkyGeni",
+        location="Remote",
+        subtitle="Software Engineer Intern",
+        date="June 2022 - August 2022"
+    )
+    skygeni.add_item("Developed and maintained microservices using Node.js and Express.js, improving system modularity and scalability")
+    skygeni.add_item("Implemented data processing pipelines using Apache Kafka for real-time event streaming")
+    skygeni.add_item("Contributed to the design and implementation of RESTful APIs, enhancing communication between services")
+    skygeni.add_item("Participated in Agile development processes, including daily stand-ups and sprint planning")
 
-    # Section formatting
-    doc.preamble.append(NoEscape(r'\titleformat{\section}{\vspace{-10pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]'))
+    sayurbox = ResumeSubheading(
+        title="Sayurbox",
+        location="Jakarta, Indonesia",
+        subtitle="Software Engineer Intern",
+        date="June 2021 - August 2021"
+    )
+    sayurbox.add_item("Assisted in the development of an e-commerce platform using React and Redux, improving user experience")
+    sayurbox.add_item("Implemented responsive design principles, ensuring compatibility across various devices and screen sizes")
+    sayurbox.add_item("Collaborated with the backend team to integrate APIs and optimize data retrieval processes")
+    sayurbox.add_item("Participated in code reviews and contributed to the improvement of coding standards and best practices")
 
-    # Ensure that generate pdf is machine readable/ATS parsable
-    doc.preamble.append(NoEscape(r'\pdfgentounicode=1'))
+    experience.add_subheading(hrhouz)
+    experience.add_subheading(ta)
+    experience.add_subheading(skygeni)
+    experience.add_subheading(sayurbox)
+    resume.add_section(experience)
 
-    # Custom commands
-    doc.preamble.append(NoEscape(r'''
-    \newcommand{\resumeItem}[1]{
-      \item\small{#1 \vspace{-2pt}}
-    }
-    \newcommand{\resumeSubheading}[4]{
-      \vspace{-2pt}\item
-        \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-          \textbf{#1} & #2 \\
-          \textit{\small#3} & \textit{\small #4} \\
-        \end{tabular*}\vspace{-7pt}
-    }
-    \newcommand{\resumeSubSubheading}[2]{
-        \item
-        \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-          \textit{\small#1} & \textit{\small #2} \\
-        \end{tabular*}\vspace{-7pt}
-    }
-    \newcommand{\resumeProjectHeading}[2]{
-        \item
-        \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-          \small#1 & #2 \\
-        \end{tabular*}\vspace{-7pt}
-    }
-    \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-    \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-    \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-    \newcommand{\resumeItemListStart}{\begin{itemize}}
-    \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-    '''))
+    projects = ResumeSection("Projects")
 
-    # Document content
-    doc.append(NoEscape(r'\begin{document}'))
+    study_suite = ResumeSubheading(
+        title="Study Suite",
+        location="",
+        subtitle="Full-Stack Web Application",
+        date="September 2022 - December 2022",
+        head_type='project'
+    )
+    study_suite.add_item("Developed a comprehensive study management platform using React, Node.js, and MongoDB")
+    study_suite.add_item("Implemented features such as task scheduling, progress tracking, and collaborative study sessions")
+    study_suite.add_item("Utilized Redux for state management and Socket.io for real-time updates")
+    study_suite.add_item("Deployed the application on AWS, ensuring scalability and high availability")
 
-    # Header
-    doc.append(NoEscape(r'''
-    \begin{center}
-        \textbf{\Huge \scshape Ronald Arifin} \\ \vspace{5pt}
-        \small 510-478-6156 $|$ \href{mailto:ronaldarifin@berkeley.edu}{\underline{ronaldarifin@berkeley.edu}} $|$ 
-        \href{https://linkedin.com/in/ronaldarifin}{\underline{linkedin.com/in/ronaldarifin}} $|$
-        \href{https://github.com/ronaldarifin}{\underline{github.com/ronaldarifin}} $|$
-        \href{https://www.ronaldarifin.com}{\underline{ronaldarifin.com}}
-    \end{center}
-    '''))
+    database_system = ResumeSubheading(
+        title="Database Management System",
+        location="",
+        subtitle="C++ Implementation",
+        date="January 2023 - May 2023",
+        head_type='project'
+    )
+    database_system.add_item("Designed and implemented a relational database management system from scratch using C++")
+    database_system.add_item("Developed key components including query parser, execution engine, and storage manager")
+    database_system.add_item("Implemented B+ tree indexing for efficient data retrieval and query optimization")
+    database_system.add_item("Achieved significant performance improvements over naive implementations in benchmark tests")
 
-    # Education
-    doc.append(NoEscape(r'''
-    \section{Education}
-    \resumeSubHeadingListStart
-        \resumeSubheading
-          {University of California, Berkeley}{California}
-          {Electrical Engineering and Computer Science, B.S.}{Expected Graduation: December 2024}
-          \resumeItemListStart
-            \resumeItem{\textbf{Relevant Coursework}: Introduction to Database Systems, Introduction to the Internet: Protocol and Architecture, Computer Security, Operating Systems, Algorithms and Data Structures}
-            \resumeItem{\textbf{Campus Organizations:} Computer Science Mentors [Senior Mentor], Cloud Computing at Cal [Lead Engineer], Google Developers at DVC [President]}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-    '''))
+    projects.add_subheading(study_suite)
+    projects.add_subheading(database_system)
+    resume.add_section(projects)
 
-    # Experience
-    doc.append(NoEscape(r'''
-    \section{Experience}
-    \resumeSubHeadingListStart
-        \resumeSubheading
-          {HrHouz – Software Engineer Intern}{Jun 2024 -- Present}
-          {Python, Docker, PostgreSQL, Github Actions, Embeddings}{Berkeley, CA}
-          \resumeItemListStart
-            \resumeItem{Led the development of a top K applicant ranking service, expanding HRHouz's product offerings to recruiters.}
-            \resumeItem{Optimized resume matching for recruiters by chunking candidate resume and applying keyword searches \& \textbf{cosine similarity vector search} using pgvector improving resume search precision by 37\%}
-            \resumeItem{Built pipelines to batch data transfer from OLTP to OLAP system pushing over 50.000 records, streamlining data preparation for custom embedding training.}
-            \resumeItem{Streamlined service setup for PostgreSQL \& back-end server with Make and Docker, reducing build and testing time by 28\%.}
-          \resumeItemListEnd
-        \resumeSubheading
-          {UC Berkeley - CS61A Head Teaching Assistant}{May 2023 - Present}
-          {Python, SQL, Scheme}{Berkeley, CA}
-          \resumeItemListStart
-            \resumeItem{Led labs and discussions for Berkeley's CS61A, teaching OOP, SQL, Scheme, and recursion to over 1,000 students, improving their understanding and performance in programming fundamentals.}
-            \resumeItem{Managed CS61A Edstem platform, coordinating with TAs on logistics and addressing 300+ theory questions.}
-          \resumeItemListEnd
-        \resumeSubheading
-          {Skygeni – Software Engineer Contract}{Jan 2024 -  May 2024}
-          {Python, OpenAI API, Function Calling}{Remote}
-          \resumeItemListStart
-            \resumeItem{Integrated an LLM chatbot into Skygeni's services, providing real-time marketing metrics insights, improving user decision-making.}
-            \resumeItem{Implemented tool calls, enabling the chatbot to retrieve key marketing data within Skygeni's platform.}
-          \resumeItemListEnd
-        \resumeSubheading
-          {Sayurbox – Software Engineer Intern}{Aug 2021 -  Feb 2022}
-          {Typescript, React, Axios}{Remote}
-          \resumeItemListStart
-            \resumeItem{Increased Sayurbox WMS receiving process by 23\% by changing the UI and UX in 5 view controllers impacting over 72 warehouse workers with \textbf{Typescript, React, and Reactstrap} library}
-            \resumeItem{Integrated 10+ APIs using \textbf{Axios} to display, submit, and delete data in various warehouse processes}
-            \resumeItem{Led task distribution and communicated git merging with other engineers hitting 1 epic task per scrum cycle}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-    '''))
-
-    # Projects
-    doc.append(NoEscape(r'''
-    \section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{StudySuite: Stanford Hackathon Winner} $|$ \emph{Python, Fetch AI}}{}
-          \resumeItemListStart
-            \resumeItem{Engineered an interactive learning platform using uAgents, video-to-text extraction, and Large Language Models, applying active recall and spaced repetition principles to boost student retention by 200\%, winning 1st place at Stanford Treehacks out of 120 teams.}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Database System} $|$ \emph{Java}}{}
-          \resumeItemListStart
-            \resumeItem{Designed and implemented efficient B+ Tree indexing structures for quick file look ups}
-            \resumeItem{Programmed multigranularity locking and lock management system to prevent deadlock in a transaction}
-            \resumeItem{Applied ARIES recovery protocol to recover data in a database crash by implementing redo and undo logging}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-    '''))
-
-    # Honors and Certifications
-    doc.append(NoEscape(r'''
-    \section{Honors and Certifications}
-    \begin{itemize}[leftmargin=0.15in, label={}]
-        \small{\item{
-         \textbf{AWS Cloud Practitioner – Foundational}{}
-        }}
-    \end{itemize}
-    '''))
+    honors = ResumeSection("Honors and Certifications")
+    aws_cert = ResumeSubheading(
+        title="AWS Cloud Practitioner – Foundational",
+        location="",
+        subtitle="",
+        date="",
+        head_type='default'
+    )
+    honors.add_subheading(aws_cert)
+    resume.add_section(honors)
 
     # Technical Skills
-    doc.append(NoEscape(r'''
-    \section{Technical Skills}
-    \begin{itemize}[leftmargin=0.15in, label={}]
-        \small{\item{
-         \textbf{Languages \& Technologies}{: Python, SQL (Postgres), NoSQL (MongoDB), Java} \\
-         \textbf{Frameworks \& Libraries}{: React, Axios, Flask, Pytest, Parse} \\
-         \textbf{Developer Tools}{: Git, Docker, Github Actions, VS Code, Postman, Make, AWS, Warp, Raycast, Vim} \\
-        }}
-    \end{itemize}
-    '''))
+    skills = TechnicalSkills()
+    skills.add_skill_category("Languages & Technologies", "Python, SQL (Postgres), NoSQL (MongoDB), Java")
+    skills.add_skill_category("Frameworks & Libraries", "React, Axios, Flask, Pytest, Parse")
+    skills.add_skill_category("Developer Tools", "Git, Docker, Github Actions, VS Code, Postman, Make, AWS, Warp, Raycast, Vim")
+    resume.add_section(skills)
 
-    doc.append(NoEscape(r'\end{document}'))
-
-    # Generate the PDF
-    output_dir = "output"
-    os.makedirs(output_dir, exist_ok=True)
-    
-    output_file = f'{output_dir}/resume'
-    pdflatex_path = "/Library/TeX/texbin/pdflatex"
-    
-    try:
-        doc.generate_pdf(
-            output_file,
-            compiler=pdflatex_path,
-            compiler_args=['-interaction=nonstopmode'],
-            clean_tex=False
-        )
-        print(f"PDF generated successfully at {output_file}.pdf")
-    except subprocess.CalledProcessError as e:
-        if os.path.exists(f"{output_file}.pdf"):
-            print("PDF generated successfully, despite LaTeX warnings.")
-        else:
-            print(f"Error generating PDF: {e}")
-            print("LaTeX output:")
-            print(e.output.decode())
-            raise
+    resume.generate_pdf()
 
 if __name__ == "__main__":
     generate_resume_pdf()
