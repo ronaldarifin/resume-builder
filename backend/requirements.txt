@@ -1,1 +1,5 @@
 pylatex
+baml-py
+PyPDF2
+pydantic
+python-dotenv
