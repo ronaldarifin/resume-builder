@@ -1,1 +1,66 @@
-myenv
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.pyc
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+.eggs/
+*.wheel
+
+# Test results
+*.coverage
+*.tox
+nosetests.xml
+coverage.xml
+*.pytest_cache/
+.pytest_cache/
+.pytest_cache/*
+
+# Virtual environments
+.env
+.venv
+
+# Logs and database files
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache files
+*.mypy_cache/
+.mypy_cache/
+*.cache/
+.cache/
+*.coverage
+.coverage.*
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Docker related
+*.env
+docker-compose.override.yml
+Dockerfile
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.iml
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
