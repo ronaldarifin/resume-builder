@@ -30,7 +30,9 @@ class ResumeSubheading {
 }
 
 class TechnicalSkills {
-  skills string[]
+  language_and_technologies string[]
+  frameworks string[]
+  developer_tools string[]
 }
 
 // Create a function to extract the resume from a string.

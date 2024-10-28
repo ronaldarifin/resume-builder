@@ -84,15 +84,15 @@ class ResumeParser:
         except Exception as e:
             raise Exception(f"Error extracting text from PDF: {str(e)}")
     
-    def convert_to_structured_data():
+    # def convert_to_structured_data():
 
 
-if __name__ == "__main__":
-    # Create the parser
-    parser = ResumeParser()
+# if __name__ == "__main__":
+#     # Create the parser
+#     parser = ResumeParser()
     
-    # Specify the correct path to your PDF file
-    pdf_path = "/Users/ronald/Documents/GitHub/resume-builder/backend/output/resume.pdf"
+#     # Specify the correct path to your PDF file
+#     pdf_path = "/Users/ronald/Documents/GitHub/resume-builder/backend/output/resume.pdf"
     
-    # Call the method with the path
-    text = parser.extract_text_from_pdf(pdf_path)
+#     # Call the method with the path
+    # text = parser.extract_text_from_pdf(pdf_path)
