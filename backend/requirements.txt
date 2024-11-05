@@ -1,4 +1,5 @@
 pylatex
+requests
 baml-py
 PyPDF2
 pydantic
