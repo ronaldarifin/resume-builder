@@ -48,22 +48,11 @@ function ExtractResume(resume: string) -> Resume {
   "#
 }
 
-// Test the function with a sample resume. Open the VSCode playground to run this.
-test vaibhav_resume {
-  functions [ExtractResume]
-  args {
-    resume #"
-      Vaibhav Gupta
-      vbv@boundaryml.com
-
-      Experience:
-      - Founder at BoundaryML
-      - CV Engineer at Google
-      - CV Engineer at Microsoft
-
-      Skills:
-      - Rust
-      - C++
-    "#
-  }
+function ExtractResumeSimple(resume: string) -> string {
+  client "openai/gpt-4o-mini"
+  prompt #"
+    Explain the candidate's resume:
+    {{ resume }}
+    {{ ctx.output_format }}
+  "#
 }
