@@ -96,5 +96,5 @@ class PerplexityAPI:
         ]
         return self.chat_completion(messages, **kwargs)['choices'][0]['message']['content']
 
-perplexity = PerplexityAPI()
-print(perplexity.simple_completion("what is the values and mission of doordash?"))
+# perplexity = PerplexityAPI()
+# print(perplexity.simple_completion("what is the values and mission of doordash?"))
