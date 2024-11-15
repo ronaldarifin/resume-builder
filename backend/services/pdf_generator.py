@@ -20,10 +20,8 @@ class PDFGenerator:
     def _add_header(self, user_info: UserInfo) -> None:
         headers = [
             user_info.name,
-            user_info.address,
-            user_info.get_formatted_address(),
             user_info.phone,
-            str(user_info.date)
+            user_info.date.strftime('%d %B, %Y')
         ]
         for header in headers:
             self.pdf.cell(0, 5, header, ln=True)
@@ -35,12 +33,11 @@ class PDFGenerator:
         
         self.pdf.add_page()
         self._add_header(user_info)
-        self.pdf.cell(0, 5, "", ln=True)  # Spacing
+        self.pdf.cell(0, 3, "", ln=True)  # Spacing
         
         clean_content = self._clean_text(content)
         for paragraph in clean_content.split('\n'):
             self.pdf.multi_cell(0, 5, paragraph)
-            self.pdf.cell(0, 5, "", ln=True)
-            
+            self.pdf.cell(0, 3, "", ln=True)
         self.pdf.output(output_path)
         return output_path 

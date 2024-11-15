@@ -131,3 +131,6 @@ DUMMY_RESUME_DICT_1 =  {
         ]
       }
     }
+
+
+RONALD_RESUME_EXPLAINATIONS

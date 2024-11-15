@@ -29,7 +29,7 @@ class CoverLetterGenerator:
     
     def generate(self, 
                 company_name: str, 
-                values: List[str], 
+                # values: List[str], 
                 user_info: UserInfo, 
                 output_path: str,
                 simple: bool = True) -> str:
@@ -44,7 +44,7 @@ class CoverLetterGenerator:
             resume=resume,
             culture=company_culture,
             company_name=company_name,
-            values=",".join(values),
+            # values=",".join(values),
             user_info=str(user_info)
         )
         
@@ -64,11 +64,10 @@ if __name__ == "__main__":
         zip_code="94704",
         phone="+15104786156"
     )
-    
     generator = CoverLetterGenerator("/Users/ronald/Documents/GitHub/resume-builder/backend/output/input1.pdf")
     generator.generate(
-        company_name="https://www.atomuscyber.com/",
-        values=["Real-World Impact", "Strong CS Fundamentals", "Start Up Experience"],
+        company_name="Genius Sports",
+        # values=["Real-World Impact", "Strong CS Fundamentals", "Start Up Experience"],
         user_info=user,
         output_path='output/cover_letter'
     )
