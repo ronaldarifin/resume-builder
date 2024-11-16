@@ -11,11 +11,32 @@ class PDFGenerator:
 
     def _clean_text(self, text: str) -> str:
         replacements = {
-            '—': '-', '"': '"', '"': '"', ''': "'", ''': "'", '´': "'"
+            '—': '-',
+            '"': '"',
+            '"': '"',
+            ''': "'",
+            ''': "'",
+            '´': "'",
+            '–': '-',  # en dash
+            '…': '...',  # ellipsis
+            '•': '*',  # bullet point
+            '©': '(c)',  # copyright
+            '®': '(R)',  # registered trademark
+            '™': '(TM)',  # trademark
+            '°': ' degrees',  # degree symbol
+            '±': '+/-',  # plus-minus
+            '×': 'x',  # multiplication
+            '÷': '/',  # division
         }
         for old, new in replacements.items():
             text = text.replace(old, new)
-        return text.encode('latin-1', 'replace').decode('latin-1')
+        
+        # First try to encode as UTF-8, then fallback to latin-1 with replacements
+        try:
+            return text.encode('latin-1').decode('latin-1')
+        except UnicodeEncodeError:
+            # Replace any remaining problematic characters with their closest ASCII equivalent
+            return ''.join(c if ord(c) < 128 else '_' for c in text)
 
     def _add_header(self, user_info: UserInfo) -> None:
         headers = [
