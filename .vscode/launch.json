@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Resume Editor",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/resume_builder/resume_editor.py",
+            "cwd": "${workspaceFolder}/backend",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "python": "/Users/ronald/Documents/GitHub/resume-builder/backend/myenv/bin/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend"
+            }
+        }
+    ]
+}

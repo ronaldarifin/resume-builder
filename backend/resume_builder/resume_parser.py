@@ -1,9 +1,7 @@
 import PyPDF2
 from typing import Dict
 import os
-from baml_client import b
-from baml_client.types import Resume
-import app  # This will load the environment variables
+# import app  # This will load the environment variables
 
 
 # def main():

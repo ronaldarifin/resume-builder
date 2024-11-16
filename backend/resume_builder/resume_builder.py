@@ -3,6 +3,7 @@ import subprocess
 from pylatex import Document, Package, NewPage, Command, Center, SmallText, MediumText, LargeText, LineBreak
 from pylatex.base_classes import Command as NewCommand
 from pylatex.utils import bold, italic, NoEscape
+from pylatex.utils import escape_latex
 
 class ResumeSubheading:
     def __init__(self, title, date, subtitle, location, head_type='default'):
@@ -20,16 +21,16 @@ class ResumeSubheading:
         latex = ""
         if self.head_type == 'education' or self.head_type == 'default':
             latex += r'\resumeSubheading'
-            latex += r'{' + self.title + r'}{' + self.date + r'}'
-            latex += r'{' + self.subtitle + r'}{' + self.location + r'}'
+            latex += r'{' + escape_latex(self.title) + r'}{' + escape_latex(self.date) + r'}'
+            latex += r'{' + escape_latex(self.subtitle) + r'}{' + escape_latex(self.location) + r'}'
         elif self.head_type == 'project':
             latex += r'\resumeProjectHeading'
-            latex += r'{\textbf{' + self.title + r'}}{' + self.date + r'}'
+            latex += r'{\textbf{' + escape_latex(self.title) + r'}}{' + escape_latex(self.date) + r'}'
         
         if self.items:
             latex += r'\resumeItemListStart'
             for item in self.items:
-                latex += r'\resumeItem{' + item + r'}'
+                latex += r'\resumeItem{' + escape_latex(item) + r'}'
             latex += r'\resumeItemListEnd'
         
         return latex
@@ -41,90 +42,95 @@ class ResumeSection:
     
     def add_subheading(self, subheading):
         self.subheadings.append(subheading)
-    
+        
     def generate_latex(self):
-        latex = r'\section{' + self.title + r'}'
+        latex = r'\section{' + escape_latex(self.title) + r'}'
         latex += r'\resumeSubHeadingListStart'
         for subheading in self.subheadings:
             latex += subheading.generate_latex()
         latex += r'\resumeSubHeadingListEnd'
         return latex
 
-class Resume_Builder:
-    def __init__(self, resume_instance, resume_dict):
-        self.resume_instance = resume_instance
-        self.__build_resume(resume_dict)
 
-    def __build_resume(self, resume_dict):
-        """Build resume from dictionary data"""
+class Resume_Builder:
+    def __init__(self, resume_instance, resume_obj):
+        self.resume_instance = resume_instance
+        self.__build_resume(resume_obj)
+
+    def __build_resume(self, resume_obj):
+        """Build resume from object data"""
         # Create info section
         info = resumeInfo(
-            name=resume_dict['info']['name'],
-            phone=resume_dict['info']['phone'],
-            email=resume_dict['info']['email'],
-            github_url=resume_dict['info']['github_url'],
-            linkedin_url=resume_dict['info']['linkedin_url'],
-            portfolio_url=resume_dict['info']['portfolio_url']
+            name=resume_obj.info.name,
+            phone=resume_obj.info.phone,
+            email=resume_obj.info.email,
+            github_url=resume_obj.info.github_url,
+            linkedin_url=resume_obj.info.linkedin_url,
+            portfolio_url=resume_obj.info.portfolio_url
         )
         self.resume_instance.add_section(info)
 
         # Create education section
-        education = ResumeSection(resume_dict['education']['title'])
-        for edu in resume_dict['education']['subheadings']:
+        education = ResumeSection(resume_obj.education.title)
+        for edu in resume_obj.education.subheadings:
             edu_entry = ResumeSubheading(
-                title=edu['title'],
-                date=edu['date'],
-                subtitle=edu['subtitle'],
-                location=edu['location'],
+                title=edu.title,
+                date=edu.date,
+                subtitle=edu.subtitle,
+                location=edu.location,
                 head_type='education'
             )
-            for item in edu['items']:
+            for item in edu.items:
                 edu_entry.add_item(item)
             education.add_subheading(edu_entry)
         self.resume_instance.add_section(education)
 
         # Create experience section
-        experience = ResumeSection(resume_dict['experience']['title'])
-        for exp in resume_dict['experience']['subheadings']:
+        experience = ResumeSection(resume_obj.experience.title)
+        for exp in resume_obj.experience.subheadings:
             exp_entry = ResumeSubheading(
-                title=exp['title'],
-                date=exp['date'],
-                subtitle=exp['subtitle'],
-                location=exp['location']
+                title=exp.title,
+                date=exp.date,
+                subtitle=exp.subtitle,
+                location=exp.location
             )
-            for item in exp['items']:
+            for item in exp.items:
                 exp_entry.add_item(item)
             experience.add_subheading(exp_entry)
         self.resume_instance.add_section(experience)
 
         # Create projects section
-        projects = ResumeSection(resume_dict['projects']['title'])
-        for proj in resume_dict['projects']['subheadings']:
+        projects = ResumeSection(resume_obj.projects.title)
+        for proj in resume_obj.projects.subheadings:
             proj_entry = ResumeSubheading(
-                title=proj['title'],
-                date=proj['date'],
-                subtitle=proj['subtitle'],
-                location=proj['location'],
+                title=proj.title,
+                date=proj.date,
+                subtitle=proj.subtitle,
+                location=proj.location,
                 head_type='project'
             )
-            for item in proj['items']:
+            for item in proj.items:
                 proj_entry.add_item(item)
             projects.add_subheading(proj_entry)
         self.resume_instance.add_section(projects)
 
         # Create skills section
         skills = TechnicalSkills()
-        for category, items in resume_dict['skills'].items():
-            # Split the skill string into category and items
-            skills.add_skill_category(category, items)
+        for category, items in resume_obj.skills.__dict__.items():
+            # Skip any private attributes
+            if not category.startswith('_'):
+                skills.add_skill_category(category, items)
         self.resume_instance.add_section(skills)
+
+        print("WE MANAGE TO PUT THE SKILLS")
+        print(self.resume_instance.sections)
 
 
 class Resume:
-    def __init__(self, resume_dict):
+    def __init__(self, resume_obj):
         self.sections = []
         self.doc = None
-        self.builder = Resume_Builder(self, resume_dict)
+        self.builder = Resume_Builder(self, resume_obj)
     
     def add_section(self, section):
         self.sections.append(section)
@@ -257,17 +263,18 @@ class resumeInfo():
         self.github_url = github_url
         self.linkedin_url = linkedin_url
         self.portfolio_url = portfolio_url
-    
+
     def generate_latex(self):
         latex = r'\begin{center}'
-        latex += r'\textbf{\Huge \scshape ' + self.name + r'} \\ \vspace{5pt}'
-        latex += r'\small ' + self.phone + r' $|$ '
-        latex += r'\href{mailto:' + self.email + r'}{\underline{' + self.email + r'}} $|$ '
-        latex += r'\href{' + "https://" + self.linkedin_url + r'}{\underline{' + self.linkedin_url + r'}} $|$ '
-        latex += r'\href{' + "https://" + self.github_url + r'}{\underline{' + self.github_url + r'}} $|$ '
-        latex += r'\href{' + "https://" + self.portfolio_url + r'}{\underline{' + self.portfolio_url + r'}}'
+        latex += r'\textbf{\Huge \scshape ' + escape_latex(self.name) + r'} \\ \vspace{5pt}'
+        latex += r'\small ' + escape_latex(self.phone) + r' $|$ '
+        latex += r'\href{mailto:' + escape_latex(self.email) + r'}{\underline{' + escape_latex(self.email) + r'}} $|$ '
+        latex += r'\href{' + "https://" + escape_latex(self.linkedin_url) + r'}{\underline{' + escape_latex(self.linkedin_url) + r'}} $|$ '
+        latex += r'\href{' + "https://" + escape_latex(self.github_url) + r'}{\underline{' + escape_latex(self.github_url) + r'}} $|$ '
+        latex += r'\href{' + "https://" + escape_latex(self.portfolio_url) + r'}{\underline{' + escape_latex(self.portfolio_url) + r'}}'
         latex += r'\end{center}'
         return latex
+
     
     
 
@@ -284,7 +291,7 @@ class TechnicalSkills:
         latex += r'\small{\item{'
         for category, skills in self.skills.items():
             category = category.replace("_", " ")
-            latex += r'\textbf{' + category.title() + r'}{: ' + ", ".join(skills) + r'} \\'
+            latex += r'\textbf{' + escape_latex(category.title()) + r'}{: ' + escape_latex(", ".join(skills)) + r'} \\'
         latex += r'}}'
         latex += r'\end{itemize}'
         return latex
