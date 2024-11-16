@@ -66,7 +66,7 @@ if __name__ == "__main__":
     )
     generator = CoverLetterGenerator("/Users/ronald/Documents/GitHub/resume-builder/backend/output/input1.pdf")
     generator.generate(
-        company_name="Genius Sports",
+        company_name="Genius Sport",
         # values=["Real-World Impact", "Strong CS Fundamentals", "Start Up Experience"],
         user_info=user,
         output_path='output/cover_letter'

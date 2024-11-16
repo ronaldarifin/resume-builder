@@ -22,7 +22,7 @@ class PerplexityAPI:
     def chat_completion(
         self,
         messages: List[Dict[str, str]],
-        model: str = "llama-3.1-sonar-small-128k-online",
+        model: str = "llama-3.1-sonar-huge-128k-online",
         max_tokens: int = 1024,
         temperature: float = 0.2,
         top_p: float = 0.9,
