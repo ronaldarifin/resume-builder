@@ -23,7 +23,7 @@ class CoverLetterGenerator:
         """Get company mission and values using Perplexity API"""
         query = (
             f"What is the mission and values of {company_name}. "
-            f"Also include the address, city, state, and zip of the {company_name}"
+            f"What does the company do?"
         )
         return PerplexityAPI().simple_completion(query)
     
