@@ -67,7 +67,8 @@ import os
 
 
 class ResumeParser:
-    def extract_text_from_pdf(self, pdf_path: str) -> str:
+    @staticmethod
+    def extract_text_from_pdf(pdf_path: str) -> str:
         """Extract text from a PDF file"""
         if not os.path.exists(pdf_path):
             raise FileNotFoundError(f"PDF file not found: {pdf_path}")

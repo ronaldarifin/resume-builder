@@ -2,9 +2,10 @@ import sys
 sys.path.append('..')  # Add parent directory to path
 from typing import List, Optional
 from models.user_info import UserInfo
-from pdf_generator import PDFGenerator
+from cover_letter.pdf_generator import PDFGenerator
 from resume_builder.resume_parser import ResumeParser
 from baml_client import b
+import app
 from utils.perplexity import PerplexityAPI
 
 class CoverLetterGenerator:
@@ -18,6 +19,7 @@ class CoverLetterGenerator:
         if not self.pdf_path:
             raise ValueError("PDF path not provided")
             
+        # Create an instance of ResumeParser first
         text = self.parser.extract_text_from_pdf(self.pdf_path)
         return b.ExtractResumeSimple(text) if simple else b.ExtractResume(text)
     
@@ -68,7 +70,7 @@ if __name__ == "__main__":
     )
     generator = CoverLetterGenerator("/Users/ronald/Documents/GitHub/resume-builder/backend/output/input1.pdf")
     generator.generate(
-        company_name="Build Out",
+        company_name="TeacherToolAI",
         # values=["Real-World Impact", "Strong CS Fundamentals", "Start Up Experience"],
         user_info=user,
         output_path='output/cover_letter'
