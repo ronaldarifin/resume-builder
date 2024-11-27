@@ -21,12 +21,11 @@ This video walkthrough highlights:
 
 ---
 
-## 🛠️ Troubleshooting
-
-If the video thumbnail doesn’t appear or the link isn’t working:
-1. Ensure your browser supports embedded videos.
-2. Refresh the page or clear your browser cache.
-3. Access the direct video link provided above.
+# What's Next
+- Currently building vector search between bullet points and the job description
+- Planning to integrate stripe for learning purposes
+- Build the UI for the application
+- Implement caching for cover letter generation
 
 ---
 
